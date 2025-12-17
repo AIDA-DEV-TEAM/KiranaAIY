@@ -175,7 +175,8 @@ const StockView = () => {
                 });
 
                 if (exists) {
-                    matched.push({ ...item, productId: exists.id });
+                    // Use existing inventory price since we ignore OCR price
+                    matched.push({ ...item, productId: exists.id, price: exists.price });
                 } else {
                     missing.push(item);
                 }

@@ -32,10 +32,10 @@ async def process_bill(file: UploadFile = File(...)):
         - Return strictly this JSON object for invalid images: {"error": "This looks like a photo of a shelf or products. Please upload a clear image of a Bill or Invoice document."}
 
         If and ONLY IF the image IS a valid document/bill:
-        Extract the list of items, their quantities, and prices.
+        Extract the list of items and their quantities. DO NOT EXTRACT PRICES.
         Return the data in a pure JSON format like this:
         [
-            {"name": "Item Name", "quantity": 10, "price": 100},
+            {"name": "Item Name", "quantity": 10},
             ...
         ]
         
