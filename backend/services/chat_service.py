@@ -114,11 +114,22 @@ async def process_chat_message(message: str, history: list = [], language: str =
 
     # Format Inventory Context
     inventory_context = "Current Inventory:\n"
+    low_stock_items = []
     if inventory:
         for item in inventory:
             name_en = item.get('name', {}).get('en', 'Unknown') if isinstance(item.get('name'), dict) else item.get('name', 'Unknown')
             stock = item.get('stock', 0)
+            max_stock = item.get('max_stock', 50)
             inventory_context += f"- {name_en}: {stock}\n"
+            
+            # Logic for Low Stock: <= 50% of max_stock
+            if stock <= (max_stock * 0.5):
+                low_stock_items.append(f"{name_en} ({stock}/{max_stock})")
+
+    if low_stock_items:
+        inventory_context += f"\nLOW STOCK ALERT ({len(low_stock_items)} items): {', '.join(low_stock_items)}"
+    else:
+        inventory_context += "\nNo items are low in stock."
     else:
         inventory_context += "(No inventory data available)"
 
