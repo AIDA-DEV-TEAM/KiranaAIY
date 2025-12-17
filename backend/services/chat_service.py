@@ -126,10 +126,10 @@ async def process_chat_message(message: str, history: list = [], language: str =
             if stock <= (max_stock * 0.5):
                 low_stock_items.append(f"{name_en} ({stock}/{max_stock})")
 
-    if low_stock_items:
-        inventory_context += f"\nLOW STOCK ALERT ({len(low_stock_items)} items): {', '.join(low_stock_items)}"
-    else:
-        inventory_context += "\nNo items are low in stock."
+        if low_stock_items:
+            inventory_context += f"\nLOW STOCK ALERT ({len(low_stock_items)} items): {', '.join(low_stock_items)}"
+        else:
+            inventory_context += "\nNo items are low in stock."
     else:
         inventory_context += "(No inventory data available)"
 
