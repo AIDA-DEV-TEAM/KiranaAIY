@@ -432,7 +432,6 @@ const StockView = () => {
                                             {activeTab === 'bill' ? (
                                                 <>
                                                     <th className="px-4 py-3 font-medium text-right">Qty</th>
-                                                    <th className="px-4 py-3 font-medium text-right">Price</th>
                                                 </>
                                             ) : (
                                                 <th className="px-4 py-3 font-medium text-right">Position</th>
@@ -447,7 +446,6 @@ const StockView = () => {
                                                 {activeTab === 'bill' ? (
                                                     <>
                                                         <td className="px-4 py-3 text-right text-muted-foreground">{item.quantity}</td>
-                                                        <td className="px-4 py-3 text-right font-medium">₹{item.price}</td>
                                                     </>
                                                 ) : (
                                                     <td className="px-4 py-3 text-right font-mono text-primary bg-primary/5 rounded px-2 w-fit">{item.position}</td>
